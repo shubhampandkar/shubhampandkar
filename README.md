@@ -1,6 +1,6 @@
 # The Online Computer Store
 
-##GOAL: 
+## GOAL: 
 
 Implement The Online Computer Store. The android application is implemented using Python, SQLite3 as a backend in order to interact with the database 
 and Python tkinter at the frontend (UI). All the functions that are included in the application are as mentioned  
@@ -21,7 +21,7 @@ and Python tkinter at the frontend (UI). All the functions that are included in 
   The price and the quantity of every product in the transaction is available as well as the total amount of the transaction. 
 •	There are three main categories of product types: Desktop, laptops, and printers. 
 
-##IMPLEMENTATION: 
+## IMPLEMENTATION: 
 This application satisfies all the needs of a typical online computer store which helps all the people involved in manual purchasing of the computers. 
 The online computer store database application has been made to provide the admin and users with better facilities to perform the functionalities 
 mentioned in the goals of the project. The main purpose of this is to provide easy and convenient access to the users to add a product to cart and 
@@ -42,5 +42,15 @@ Sale Statistics and Update user information.
 After doing the major work, we connected the front UI with the backend of Sqlite3, so that all the data can be easily accessed by the end user. 
 So, while clicking any button or link it will fetch the details in the backend (DB) and after processing it will display the result to the user. 
 
+![alt text](https://github.com/shubhampandkar/online_store_DBMS_UI/blob/main/images/registration.png "Registration")
 
+![alt text](https://github.com/shubhampandkar/online_store_DBMS_UI/blob/main/images/login.png "Login")
+
+![alt text](https://github.com/shubhampandkar/online_store_DBMS_UI/blob/main/images/main_screen.png "Main Screen")
+
+![alt text](https://github.com/shubhampandkar/online_store_DBMS_UI/blob/main/images/online_Sale.png "Online Sale")
+
+![alt text](https://github.com/shubhampandkar/online_store_DBMS_UI/blob/main/images/sale_stats.png "Sale Statistics")
+
+![alt text](https://github.com/shubhampandkar/online_store_DBMS_UI/blob/main/images/Update_user_Details.png "Update User Details")
 
