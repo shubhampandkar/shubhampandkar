@@ -15,6 +15,7 @@ To predict if the tweet is about a real disaster or not.
 
 ## Exploratory data analysis
 The graphical description of information and data is known as data visualization. Data visualization tools make it easy to examine and comprehend trends, outliers, and patterns in data by engaging visually like charts, graphs, and maps.
+
 	1.	Bar plot
       We have plotted the bar graph for the number of tweets falling under the real and fake category. 
       It is clear that the data is highly unbalanced. There are more fake tweets than the real ones.
@@ -73,7 +74,7 @@ Models
       The Bayes theorem provides the basis for a collection of supervised machine learning classification algorithms known as Naive Bayes. 
       It's a simple categorization technique with a lot of power. They're useful when the inputs' dimensionality is high. The Naive
       Bayes Classifier can also be used to solve complex classification issues.
-      The Bayes Theorem is used to create Naive Bayes Classifiers. The high independence assumptions between the features are one of the assumptions made.
+      The Bayes Theorem is used to create Naive Bayes Classifiers. The high independence assumptions between the features are one of the assumptions 	  	made.
       These classifiers make the assumption that the value of one feature is unrelated to the value of any other characteristic. 
       Naive Bayes Classifiers are particularly efficient in supervised learning situations. 
       To estimate the parameters needed for classification, naive Bayes classifiers require a small amount of training data. 
