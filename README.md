@@ -2,10 +2,11 @@
 
 ## Index
 
-This repository holds all of my personal projects that I've worked on. Currently they're binned in two different categories
+This repository holds all of my personal projects that I've worked on. Currently they're binned in two different categories along with third category for HackerRank codes
 
 1. [Personal Programming Projects (Python - Data Science)](https://github.com/shubhampandkar/shubhampandkar/tree/main/Personal%20Programming%20Projects)
 2. Public Tableau Visualizations
+3. [HackerRank] (https://github.com/shubhampandkar/shubhampandkar/tree/main/HackerRank)
 
 Each category has their own variety of projects and should be accompanied by some form of documentation.
 
