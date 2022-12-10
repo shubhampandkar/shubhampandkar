@@ -102,7 +102,22 @@ c happens to equal the maximum value in Northern Latitude (LAT_N in STATION).
 d happens to equal the maximum value in Western Longitude (LONG_W in STATION).
 Query the Manhattan Distance between points P1 and p2 and round it to a scale of 4 decimal places.**   
 Solution :   
-SELECT ROUND(LONG_W,4) FROM STATION  
-WHERE LAT_N > 38.7780  
-ORDER BY LAT_N  
-LIMIT 1;  
+SELECT ROUND(ABS(MAX(LAT_N) - MIN(LAT_N)) + ABS(MAX(LONG_W) - MIN(LONG_W)), 4) FROM STATION;  
+
+## Weather Observation Station 19          
+**Question : Consider P1(a,c) and P2(b,d) to be two points on a 2D plane where (a,b) are the respective minimum and maximum values of Northern Latitude (LAT_N) and (c,d) are the respective minimum and maximum values of Western Longitude (LONG_W) in STATION.  
+Query the Euclidean Distance between points P1 and P2 and format your answer to display 4 decimal digits.**   
+Solution :   
+SELECT ROUND(SQRT(POWER(MAX(LAT_N) - MIN(LAT_N), 2) + POWER(MAX(LONG_W) - MIN(LONG_W), 2)), 4)  
+FROM STATION;   
+
+## Weather Observation Station 20            
+**Question : A median is defined as a number separating the higher half of a data set from the lower half. Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to 4 decimal places.**   
+Solution :   
+SELECT ROUND(S1.LAT_N, 4)   
+FROM STATION AS S1   
+WHERE (SELECT ROUND(COUNT(S1.ID)/2) - 1   
+        FROM STATION) =   
+        (SELECT COUNT(S2.ID)   
+        FROM STATION AS S2   
+        WHERE S2.LAT_N > S1.LAT_N);   
