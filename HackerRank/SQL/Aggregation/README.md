@@ -41,8 +41,7 @@ Solution :
 SELECT CEIL(AVG(SALARY)- AVG(REPLACE(SALARY, '0', ''))) FROM EMPLOYEES;  
 
 ## Top Earners.   
-**Question : We define an employee's total earnings to be their monthly salary x months worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as 2 space-separated integers.
-**   
+**Question : We define an employee's total earnings to be their monthly salary x months worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as 2 space-separated integers.**   
 Solution :   
 SELECT SALARY*MONTHS, COUNT(*) FROM EMPLOYEE  
 GROUP BY SALARY * MONTHS  
@@ -62,3 +61,48 @@ CAST(ROUND(SUM(LONG_W),2) AS DECIMAL (10,2)) FROM STATION;
 Solution :   
 SELECT TRUNCATE(SUM(LAT_N),4) FROM STATION  
 WHERE LAT_N > 38.7880 AND LAT_N < 137.2345;  
+
+## Weather Observation Station 14     
+**Question : Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than 137.2345. Truncate your answer to 4 decimal places.**   
+Solution :   
+SELECT TRUNCATE(LAT_N,4) FROM STATION  
+WHERE LAT_N < 137.2345  
+ORDER BY LAT_N DESC  
+LIMIT 1;  
+
+## Weather Observation Station 15  
+**Question : Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is less than 137.2345. Round your answer to 4 decimal places.**   
+Solution :   
+SELECT ROUND(LONG_W,4) FROM STATION   
+WHERE LAT_N < 137.2345  
+ORDER BY LAT_N DESC  
+LIMIT 1;  
+
+## Weather Observation Station 16    
+**Question : Query the smallest Northern Latitude (LAT_N) from STATION that is greater than 38.7780. Round your answer to 4 decimal places.**   
+Solution :   
+SELECT ROUND(LAT_N,4) FROM STATION  
+WHERE LAT_N > 38.7780  
+ORDER BY LAT_N  
+LIMIT 1;  
+
+## Weather Observation Station 17      
+**Question : Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N) in STATION is greater than 38.7780. Round your answer to 4 decimal places.**   
+Solution :   
+SELECT ROUND(LONG_W,4) FROM STATION  
+WHERE LAT_N > 38.7780  
+ORDER BY LAT_N  
+LIMIT 1;  
+
+## Weather Observation Station 18        
+**Question : Consider P1(a,b) and P2(c,d) to be two points on a 2D plane.
+a happens to equal the minimum value in Northern Latitude (LAT_N in STATION).
+b happens to equal the minimum value in Western Longitude (LONG_W in STATION).
+c happens to equal the maximum value in Northern Latitude (LAT_N in STATION).
+d happens to equal the maximum value in Western Longitude (LONG_W in STATION).
+Query the Manhattan Distance between points P1 and p2 and round it to a scale of 4 decimal places.**   
+Solution :   
+SELECT ROUND(LONG_W,4) FROM STATION  
+WHERE LAT_N > 38.7780  
+ORDER BY LAT_N  
+LIMIT 1;  
