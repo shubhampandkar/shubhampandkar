@@ -34,3 +34,41 @@ WHEN G.GRADE >= 8 THEN S.NAME END,
 G.GRADE, S.MARKS FROM STUDENTS S, GRADES G  
 WHERE S.MARKS BETWEEN G.MIN_MARK AND G.MAX_MARK  
 ORDER BY G.GRADE DESC, S.NAME ASC;  
+
+## Top Competitors
+**Question : Julia just finished conducting a coding contest, and she needs your help assembling the leaderboard! Write a query to print the respective hacker_id and name of hackers who achieved full scores for more than one challenge. Order your output in descending order by the total number of challenges in which the hacker earned a full score. If more than one hacker received full scores in same number of challenges, then sort them by ascending hacker_id.**   
+Solution :   
+SELECT S.HACKER_ID, H.NAME FROM SUBMISSIONS S  
+JOIN HACKERS H ON S.HACKER_ID = H.HACKER_ID  
+JOIN CHALLENGES C ON S.CHALLENGE_ID = C.CHALLENGE_ID  
+JOIN DIFFICULTY D ON C.DIFFICULTY_LEVEL = D.DIFFICULTY_LEVEL  
+WHERE S.SCORE = D.SCORE  
+GROUP BY H.NAME,S.HACKER_ID  
+HAVING COUNT(S.CHALLENGE_ID) > 1  
+ORDER BY COUNT(S.CHALLENGE_ID) DESC, S.HACKER_ID;  
+
+## Ollivander's Inventory
+**Question : Harry Potter and his friends are at Ollivander's with Ron, finally replacing Charlie's old broken wand.
+Hermione decides the best way to choose is by determining the minimum number of gold galleons needed to buy each non-evil wand of high power and age. Write a query to print the id, age, coins_needed, and power of the wands that Ron's interested in, sorted in order of descending power. If more than one wand has same power, sort the result in order of descending age.**   
+Solution :   
+SELECT W.ID, WP.AGE, W.COINS_NEEDED, W.POWER FROM WANDS W  
+JOIN WANDS_PROPERTY WP ON W.CODE = WP.CODE  
+WHERE W.COINS_NEEDED = (SELECT MIN(COINS_NEEDED) FROM WANDS W1  
+                       INNER JOIN WANDS_PROPERTY WP1  
+                       ON W1.CODE = WP1.CODE  
+                       WHERE WP1.IS_EVIL = 0 AND WP.AGE = WP1.AGE  
+                       AND W.POWER = W1.POWER). 
+                       ORDER BY W.POWER DESC, WP.AGE DESC;  
+                       
+## Ollivander's Inventory
+**Question : Harry Potter and his friends are at Ollivander's with Ron, finally replacing Charlie's old broken wand.
+Hermione decides the best way to choose is by determining the minimum number of gold galleons needed to buy each non-evil wand of high power and age. Write a query to print the id, age, coins_needed, and power of the wands that Ron's interested in, sorted in order of descending power. If more than one wand has same power, sort the result in order of descending age.**   
+Solution :   
+SELECT W.ID, WP.AGE, W.COINS_NEEDED, W.POWER FROM WANDS W  
+JOIN WANDS_PROPERTY WP ON W.CODE = WP.CODE  
+WHERE W.COINS_NEEDED = (SELECT MIN(COINS_NEEDED) FROM WANDS W1  
+                       INNER JOIN WANDS_PROPERTY WP1  
+                       ON W1.CODE = WP1.CODE  
+                       WHERE WP1.IS_EVIL = 0 AND WP.AGE = WP1.AGE  
+                       AND W.POWER = W1.POWER). 
+                       ORDER BY W.POWER DESC, WP.AGE DESC;  
