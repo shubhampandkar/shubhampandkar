@@ -60,15 +60,31 @@ WHERE W.COINS_NEEDED = (SELECT MIN(COINS_NEEDED) FROM WANDS W1
                        AND W.POWER = W1.POWER). 
                        ORDER BY W.POWER DESC, WP.AGE DESC;  
                        
-## Ollivander's Inventory
-**Question : Harry Potter and his friends are at Ollivander's with Ron, finally replacing Charlie's old broken wand.
-Hermione decides the best way to choose is by determining the minimum number of gold galleons needed to buy each non-evil wand of high power and age. Write a query to print the id, age, coins_needed, and power of the wands that Ron's interested in, sorted in order of descending power. If more than one wand has same power, sort the result in order of descending age.**   
+## Challenges
+**Question : Julia asked her students to create some coding challenges. Write a query to print the hacker_id, name, and the total number of challenges created by each student. Sort your results by the total number of challenges in descending order. If more than one student created the same number of challenges, then sort the result by hacker_id. If more than one student created the same number of challenges and the count is less than the maximum number of challenges created, then exclude those students from the result.**   
 Solution :   
-SELECT W.ID, WP.AGE, W.COINS_NEEDED, W.POWER FROM WANDS W  
-JOIN WANDS_PROPERTY WP ON W.CODE = WP.CODE  
-WHERE W.COINS_NEEDED = (SELECT MIN(COINS_NEEDED) FROM WANDS W1  
-                       INNER JOIN WANDS_PROPERTY WP1  
-                       ON W1.CODE = WP1.CODE  
-                       WHERE WP1.IS_EVIL = 0 AND WP.AGE = WP1.AGE  
-                       AND W.POWER = W1.POWER). 
-                       ORDER BY W.POWER DESC, WP.AGE DESC;  
+SELECT H.HACKER_ID, H.NAME, COUNT(C.CHALLENGE_ID)  
+FROM HACKERS H JOIN CHALLENGES C ON H.HACKER_ID = C.HACKER_ID  
+GROUP BY H.HACKER_ID, H.NAME  
+HAVING COUNT(C.CHALLENGE_ID) = (SELECT COUNT(C1.CHALLENGE_ID)  
+                               FROM CHALLENGES C1  
+                               GROUP BY C1.HACKER_ID  
+                               ORDER BY COUNT( * ) DESC LIMIT 1) OR  
+       COUNT(C.CHALLENGE_ID) NOT IN (SELECT COUNT(C2.CHALLENGE_ID)   
+                                FROM CHALLENGES C2  
+                                WHERE H.HACKER_ID != C2.HACKER_ID  
+                                GROUP BY C2.HACKER_ID)  
+ORDER BY COUNT(C.CHALLENGE_ID) DESC, H.HACKER_ID;   
+
+## Contest Leaderboard
+**Question : You did such a great job helping Julia with her last coding contest challenge that she wants you to work on this one, too!
+The total score of a hacker is the sum of their maximum scores for all of the challenges. Write a query to print the hacker_id, name, and total score of the hackers ordered by the descending score. If more than one hacker achieved the same total score, then sort the result by ascending hacker_id. Exclude all hackers with a total score of 0 from your result.**   
+Solution :   
+SELECT R.HACKER_ID, H.NAME, SUM(SCORE) FROM   
+(SELECT HACKER_ID, CHALLENGE_ID, MAX(SCORE) as SCORE  
+from SUBMISSIONS GROUP BY HACKER_ID, CHALLENGE_ID) as R  
+JOIN HACKERS H. 
+on R.HACKER_ID = H.HACKER_ID  
+GROUP BY R.HACKER_ID, H.NAME  
+HAVING SUM(SCORE) > 0  
+ORDER BY SUM(SCORE) DESC, R.HACKER_ID;  
