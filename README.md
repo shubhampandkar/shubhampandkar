@@ -28,5 +28,5 @@ Now I focus on programming for whatever problems come my way, automating my life
 |--------------------|:-----------------------------------------------------------------:|
 | University Email   | [sp427@njit.edu](sp427@njit.edu)                                  |
 | LinkedIn	          | [LinkedIn](https://www.linkedin.com/in/shubham-pandkar-113997173/)|
-| Tableau Public     |                                                                   |                          
+| Tableau Public     | [Tableau](https://public.tableau.com/app/profile/shubham.rajan.pandkar)|                          
  
