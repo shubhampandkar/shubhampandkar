@@ -15,8 +15,8 @@ Each category has their own variety of projects and should be accompanied by som
 Hello!
 
 My name is Shubham Pandkar and welcome to my Project Portfolio! A little bit about me. 
-I am a Graduate student at New Jersey Institute of Technology where I major in Data Science. 
-Currently I am working as a Software Engineer in Machine Learning Intern at Tango Consulting Inc.
+I graduated at New Jersey Institute of Technology where I major in Data Science. 
+
 
 
 Now I focus on programming for whatever problems come my way, automating my life wherever I can and conducting analysis on topics that interest me!
